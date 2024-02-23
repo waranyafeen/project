@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cn/components/ui/tabs"
-import { Card, CardContent, CardHeader, CardTitle, CardFooter} from "@cn/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle} from "@cn/components/ui/card"
 import {
     Carousel,
     CarouselContent,
@@ -8,13 +8,13 @@ import {
     CarouselPrevious,
 } from "@cn/components/ui/carousel"
 import { Button } from "@cn/components/ui/button"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@cn/components/ui/select"
+// import {
+//     Select,
+//     SelectContent,
+//     SelectItem,
+//     SelectTrigger,
+//     SelectValue,
+//   } from "@cn/components/ui/select"
   
 
 const Home = () => {
