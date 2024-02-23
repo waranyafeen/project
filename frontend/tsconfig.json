@@ -27,6 +27,6 @@
     }
   },
 
-  "include": ["src", "tailwind.plugin.js", "@/components/ui/lib"],
+  "include": ["src", "tailwind.plugin.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -11,7 +11,7 @@ func SetupRouter() *gin.Engine {
 }
 
 func InitRouter(route *gin.Engine) {
-	route.Use(middlewares.CORS())
+	route.Use(middlewares.Authorizes())
 
 	authRouter := route.Group("/")
 	initRequiredAuthRouter(authRouter)
@@ -59,5 +59,5 @@ func initRequiredAuthRouter(route *gin.RouterGroup) {
 	route.DELETE("/users/:id", controllers.DeleteUsers)
 
 	route.GET("/users/role", controllers.GetAllRoles)
-	route.GET("/employee/gender", controllers.GetAllGendersForUser)
+	route.GET("/users/gender", controllers.GetAllGendersForUser)
 }

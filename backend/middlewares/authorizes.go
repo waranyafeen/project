@@ -5,24 +5,8 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	//"github.com/waranyafeen/project/service"
-	
+	"github.com/waranyafeen/project/service"
 )
-func CORS() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
-		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT, DELETE, PATCH")
-
-		if c.Request.Method == "OPTIONS" {
-			c.AbortWithStatus(204)
-			return
-		}
-
-		c.Next()
-	}
-}
 
 // validates token
 func Authorizes() gin.HandlerFunc {
@@ -42,18 +26,18 @@ func Authorizes() gin.HandlerFunc {
 			return
 		}
 
-		// jwtWrapper := service.JwtWrapper{
-		// 	SecretKey: "SvNQpBN8y3qlVrsGAYYWoJJk56LtzFHx",
-		// 	Issuer:    "AuthService",
-		// }
+		jwtWrapper := service.JwtWrapper{
+			SecretKey: "SvNQpBN8y3qlVrsGAYYWoJJk56LtzFHx",
+			Issuer:    "AuthService",
+		}
 
-		// _, err := jwtWrapper.ValidateToken(clientToken)
-		// if err != nil {
-		// 	c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
-		// 	return
+		_, err := jwtWrapper.ValidateToken(clientToken)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+			return
 
-		// }
-		//c.Set("email", claims.Email)
+		}
+		// c.Set("email", claims.Email)
 		c.Next()
 	}
 
