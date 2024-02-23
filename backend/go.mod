@@ -1,6 +1,8 @@
 module github.com/waranyafeen/project
 
-go 1.21.4
+go 1.21.3
+
+require github.com/golang-jwt/jwt/v5 v5.2.0
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
