@@ -1,96 +1,70 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cn/components/ui/tabs"
-import { Card, CardContent, CardHeader, CardTitle} from "@cn/components/ui/card"
+import { Card, CardContent } from "@shadcn/ui/card";
+import NavBar from "@src/components/navbar/navBar";
+import { Phone, Mail } from 'lucide-react';
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@cn/components/ui/carousel"
-import { Button } from "@cn/components/ui/button"
-//import { Navigate } from "react-router-dom"
-//import Tour1 from "@src/assets/tour1.jpg";
-
-// import {
-//     Select,
-//     SelectContent,
-//     SelectItem,
-//     SelectTrigger,
-//     SelectValue,
-//   } from "@cn/components/ui/select"
-  
+} from "@cn/components/ui/carousel";
+import Tour9 from "@src/assets/tour9.jpg"
+import Tour8 from "@src/assets/tour8.jpg"
+import Tour5 from "@src/assets/tour5.jpg"
 
 const Home = () => {
     return (
-        <div>
-            <div className="flex flex-row-reverse">
-                <Button variant="link">Membership</Button>
-                <Button variant="link">Login</Button>
-            </div>
-            <Tabs defaultValue="Home" className="">
-                <Card>
-                    <TabsList>
-                        <TabsTrigger value="Home">Home</TabsTrigger>
-                        <TabsTrigger value="Bookticket">Book a bus ticket</TabsTrigger>
-                        <TabsTrigger value="Contact">Contact</TabsTrigger>
-                    </TabsList>
-                </Card>
-                <div className="flex justify-center">
-                    <TabsContent value="Home">
-                        <Carousel className="w-full max-w-m mt-24">
-                            <CarouselContent>
-                                {Array.from({ length: 5 }).map((_, index) => (
-                                    <CarouselItem key={index}>
-                                        <div className="p-1">
-                                            <Card>
-                                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                                    <span className="text-4xl font-semibold">{index + 1}</span>
-                                                </CardContent>
-                                            </Card>
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                            <CarouselPrevious />
-                            <CarouselNext />
-                        </Carousel>
-                    </TabsContent>
-                </div>
-                <div>
-                    <TabsContent value="Bookticket">
+        <main className="w-full h-screen flex flex-col items-center ">
+            <NavBar />
+            <Carousel className="w-screen max-w-lg mt-2">
+                <CarouselContent>
+                    <CarouselItem>
                         <div>
-                            <Card className="m-10 p-4">
-                                <CardHeader><CardTitle>Departure</CardTitle></CardHeader>
-                                <CardContent>
-                                    123456
+                            <Card className="w-full h-full">
+                                <CardContent className="flex aspect-square items-center justify-center p-6">
+                                    <img src={Tour5} alt="1" className="w-full h-full object-cover" />
                                 </CardContent>
                             </Card>
                         </div>
+                    </CarouselItem>
+                    <CarouselItem>
                         <div>
-                            <Card className="m-10 p-4">
-                                <CardHeader><CardTitle>Return Departure</CardTitle></CardHeader>
-                                <CardContent>
-                                    123456
+                            <Card className="w-full h-full">
+                                <CardContent className="flex aspect-square items-center justify-center p-6">
+                                    <img src={Tour8} alt="Image 2" className="w-full h-full object-cover" />
                                 </CardContent>
                             </Card>
                         </div>
-                        <Button variant="outline" className="ml-10" >Search</Button>
-                    </TabsContent>
-                </div>
-                <TabsContent value="Contact" className="grid grid-cols-2 gap-4">
-                    {/* <div><img src={Tour1} alt="Tour1" className="m-5 rounded-lg w-96 h-72"></img></div> */}
-                    <div className="m-5 ">
-                        <Card>
-                            <div className="text-xl font-semibold m-5">Contact</div>
-                            <div className="text-l font-semibold m-7">Address:</div>
-                            <div className="text-l font-semibold m-7">Email: B6400415@g.sut.ac.th</div>
-                            <div className="text-l font-semibold m-7">Tel-1: 0933966012</div>
-                            <div className="text-l font-semibold m-7">Tel-2: 0971037596</div>
-                        </Card>
+                    </CarouselItem>
+                    <CarouselItem>
+                        <div>
+                            <Card className="w-full h-full">
+                                <CardContent className="flex aspect-square items-center justify-center p-6">
+                                    <img src={Tour9} alt="Image 3" className="w-full h-full object-cover" />
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
+
+            <div className="mt-auto">
+                <Card className="w-screen bg-gray-200">
+                    <div className="text-xl mb-2 m-5">ติดต่อเรา</div>
+                    <div className="text-m flex items-center m-5">
+                        <Phone size={24} className="mr-2" />
+                        <div>0971037598</div>
                     </div>
-                </TabsContent>
-            </Tabs>
-        </div>
+                    <div className="text-m flex items-center m-5">
+                        <Mail size={24} className="mr-2" />
+                        <div>B6400415@g.sut.ac.th</div>
+                    </div>
+                </Card>
+            </div>
+        </main>
     );
 };
+
 export default Home;
