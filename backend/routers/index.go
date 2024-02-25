@@ -27,12 +27,12 @@ func initRequiredAuthRouter(route *gin.RouterGroup) {
 	route.GET("/employees", controllers.GetAllEmployees)
 	route.GET("/employees/:id", controllers.GetEmployees)
 	route.POST("/employees", controllers.CreateEmployees)
-	route.PUT("/employee/:id", controllers.UpdateEmployees)
-	route.DELETE("/employee/:id", controllers.DeleteEmployees)
+	route.PUT("/employees/:id", controllers.UpdateEmployees)
+	route.DELETE("/employees/:id", controllers.DeleteEmployees)
 
-	route.GET("/employee/position", user, controllers.GetAllPositions)
-	route.GET("/employee/precede", controllers.GetAllPrecedes)
-	route.GET("/employee/gender", controllers.GetAllGendersForEmployee)
+	route.GET("/employees/position", user, controllers.GetAllPositions)
+	route.GET("/employees/precede", controllers.GetAllPrecedes)
+	route.GET("/employees/gender", controllers.GetAllGendersForEmployee)
 
 	// payment system
 	route.GET("/payments", controllers.GetAllPayments)
@@ -49,6 +49,7 @@ func initRequiredAuthRouter(route *gin.RouterGroup) {
 	route.DELETE("/tickets/:id", controllers.DeleteTickets)
 
 	route.GET("/tickets/car", controllers.GetAllCars)
+	route.GET("/tickets/province", controllers.GetAllProvinces)
 	route.GET("/tickets/departure", controllers.GetAllDepartures)
 
 	// user system

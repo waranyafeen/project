@@ -101,6 +101,19 @@ func DeleteTickets(c *gin.Context) {
 
 }
 
+// GET /tickets/provice
+func GetAllProvinces(c *gin.Context) {
+	var provinces []entity.Province
+
+	if err := entity.DB().Find(&provinces).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": provinces})
+}
+
+
 // GET /tickets/car
 func GetAllCars(c *gin.Context) {
 	var cars []entity.Car
