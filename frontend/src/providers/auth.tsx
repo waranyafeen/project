@@ -1,6 +1,6 @@
 import { useToast } from "@shadcn/ui/use-toast";
 import { Employee, User } from "@src/interfaces";
-import { http } from "@src/service/http";
+import { http } from "@src/services/http";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -95,17 +95,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       if (res.ok) {
         setEmployee(res.data);
         notifySuccess("Login Successful");
-        if (from !== "/") {
-          const position: Record<number, string> = {
-            201: "/health",
-            202: "/course/setting",
-            203: "/horse",
-            204: "/food",
-            205: "/stable",
-          };
-          navigate(position[res.data.PositionID], { replace: true });
-          return;
-        }
         navigate(from, { replace: true });
       } else {
         notifyError(res.error);

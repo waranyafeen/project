@@ -2,10 +2,13 @@ export interface Employee {
     ID: number;
     PositionID: number;
     Position: Position;
+
     GenderID: number;
     Gender: Gender;
+
     PrecedeID: number;
     Precede: Precede;
+
     FirstName: string;
     LastName: string;
     Email: string;
@@ -64,9 +67,7 @@ export interface Ticket {
 
 export interface Province {
     ID: number;
-    DepsrtureStation: string;
-    DestinationStaion: string;
-    Date: Date;
+    Name: string;
 }
 
 export interface Departure {
