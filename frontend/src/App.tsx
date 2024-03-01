@@ -1,15 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import Employee from "./pages/employee";
-import Home from "./pages/home";
-import Ticket from "./pages/ticket";
-import Payment from "./pages/payment";
+import {
+  Home,
+  Login,
+  Ticket,
+  Payment,
+  Employee,
+  User
+} from "./pages";
 
 function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<Home/>}/> */}
+        <Route path="/login" element={<Login role="employee"/>}/>
         <Route path="/" element={<Home/>}/>
+        <Route path="/login/user" element={<User/>}/>
         <Route path="/ticket" element={<Ticket/>}/>
         <Route path="/payment" element={<Payment/>}/>
         <Route path="/employee" element={<Employee/>}/>

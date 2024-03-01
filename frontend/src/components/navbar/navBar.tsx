@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ModeToggle } from "../user/modeToggle";
+import { ModeToggle } from "../modeToggle";
 import { HomeIcon } from "lucide-react";
 
 const NavBar = () => {

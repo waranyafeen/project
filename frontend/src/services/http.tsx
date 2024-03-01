@@ -1,12 +1,15 @@
 type Method = "GET" | "POST" | "PUT" | "DELETE";
-const URL = "http://localhost:8080";
+
+const apiURL = "http://localhost:8080";
+
 class HttpRequest {
-  private readonly base_url: string = URL;
+  private readonly base_url: string = apiURL;
   private content_type = "application/json";
 
   public async Get<DataType>(resource: string) {
     return await this.sendRequest<DataType>("GET", this.base_url + resource);
   }
+
   public async Post<DataType, BodyType = unknown>(
     resource: string,
     body: BodyType
@@ -17,6 +20,7 @@ class HttpRequest {
       JSON.stringify(body)
     );
   }
+
   public async Put<DataType, BodyType = unknown>(
     resource: string,
     id: number,
@@ -49,6 +53,7 @@ class HttpRequest {
       body: body,
       credentials: "include",
     };
+    
     const response = await fetch(endpoint, options);
     const result = await response.json();
 
