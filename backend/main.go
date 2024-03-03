@@ -1,15 +1,19 @@
 package main
 
 import (
-	"github.com/waranyafeen/project/routers"
-	"github.com/waranyafeen/project/entity"
+	"github.com/waranyafeen/project/backend/routers"
+	"github.com/waranyafeen/project/backend/entity"
 )
 
 func main() {
-	entity.SetupDatabase("WaranratDB")
+	entity.SetupDatabase("PJWaranratDB")
 	entity.SetupData(entity.DB())
 	route := routers.SetupRouter()
-	routers.InitRouter(route)
-	route.Run()
 
+	// init Routes
+	routers.InitRouter(route)
+
+	// Run the server
+	route.Run()
 }
+

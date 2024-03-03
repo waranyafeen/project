@@ -2,8 +2,8 @@ package routers
 
 import(
 	"github.com/gin-gonic/gin"
-	"github.com/waranyafeen/project/controller"
-	"github.com/waranyafeen/project/middlewares"
+	"github.com/waranyafeen/project/backend/controllers"
+	"github.com/waranyafeen/project/backend/middlewares"
 )
 
 func SetupRouter() *gin.Engine {
