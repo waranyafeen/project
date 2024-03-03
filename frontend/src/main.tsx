@@ -1,13 +1,13 @@
-import React from 'react'
-import { BrowserRouter as Router } from "react-router-dom";
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './indec.css';
+import { ThemeProvider } from "@/layout/theamproviders/theam.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Router>
+    <ThemeProvider defaultTheme="light" storageKey="horse-ui-theme">
       <App />
-    </Router>
+    </ThemeProvider>
   </React.StrictMode>,
 )
