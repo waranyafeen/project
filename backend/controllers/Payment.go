@@ -4,7 +4,7 @@ import(
 	"strconv"
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/waranyafeen/project/entity"
+	"github.com/waranyafeen/project/backend/entity"
 	"github.com/asaskevich/govalidator"
 )
 
@@ -12,7 +12,7 @@ import(
 func GetAllPayments(c *gin.Context) {
 	var payments []entity.Payment
 
-	if err := entity.DB().Joins("").Find(&payments).Error; err != nil {
+	if err := entity.DB().Joins("Ticket").Joins("User").Find(&payments).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -25,7 +25,7 @@ func GetPayments(c *gin.Context) {
 	var payment entity.Payment
 	id := c.Param("id")
 
-	if err := entity.DB().Joins("").First(&payment, id).Error; err != nil {
+	if err := entity.DB().Joins("Ticket").Joins("User").First(&payment, id).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

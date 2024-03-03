@@ -1,5 +1,11 @@
 export interface Employee {
     ID: number;
+    FirstName: string;
+    LastName: string;
+    Email: string;
+    Password: string;
+    Tel: string;
+
     PositionID: number;
     Position: Position;
 
@@ -8,12 +14,6 @@ export interface Employee {
 
     PrecedeID: number;
     Precede: Precede;
-
-    FirstName: string;
-    LastName: string;
-    Email: string;
-    Password: string;
-    Tel: string;
 }
 
 export interface Precede {
@@ -24,8 +24,7 @@ export interface Precede {
 export interface Position {
     ID: number;
     Name: string;
-    Description: string;
-    Salary: string;
+    Salary: number;
 }
 
 export interface Gender {
@@ -39,6 +38,7 @@ export interface User {
     LastName: string;
     Email: string;
     Phone: string;
+    Age: number;
 
     RoleID: number;
     Role: Role
@@ -54,7 +54,7 @@ export interface Role {
 
 export interface Ticket {
     ID: number;
-    Price: string;
+    Price: number;
     Seat: number;
     Detail: string;
 
@@ -80,7 +80,6 @@ export interface Departure {
 export interface Car {
     ID: number;
     Name: string;
-    CarModel: string;
     Route: string;
 }
 

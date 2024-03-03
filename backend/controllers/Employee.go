@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/waranyafeen/project/entity"
+	"github.com/waranyafeen/project/backend/entity"
 	"github.com/asaskevich/govalidator"
 )
 
@@ -15,7 +15,7 @@ type EmployeeForUpdate struct {
 func GetAllEmployees(c *gin.Context) {
 	var employees []entity.Employee
 
-	if err := entity.DB().Joins("").Find(&employees).Error; err != nil {
+	if err := entity.DB().Joins("Gender").Joins("Position").Joins("Precede").Find(&employees).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -28,7 +28,7 @@ func GetEmployees(c *gin.Context) {
 	var employee entity.Employee
 	id := c.Param("id")
 
-	if err := entity.DB().Joins("").First(&employee, id).Error; err != nil {
+	if err := entity.DB().Joins("Gender").Joins("Position").Joins("Precede").First(&employee, id).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

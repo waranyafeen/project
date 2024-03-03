@@ -4,11 +4,11 @@ import (
 	"time"
 
 	"gorm.io/gorm"
+	//"github.com/asaskevich/govalidator"
 )
 
 type gormModel struct {
-	ID uint `gorm:"primarykey"`
-
+	ID        uint           `gorm:"primarykey"`
 	CreatedAt time.Time      `json:"-"`
 	UpdatedAt time.Time      `json:"-"`
 	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
@@ -20,10 +20,9 @@ type Employee struct {
 	Lastname  string `gorm:"default:Employee" `
 	Tel       string `valid:"required~Tel is required,stringlength(10|10)~Tel must be at 10 characters"`
 	Email     string `gorm:"unique" valid:"required~Email is required,email~Invalid email"`
-	//Username  string
-	Password string `valid:"required~Password is required,minstringlength(4)~Password must be at 4 characters"`
+	Password  string `valid:"required~Password is required,minstringlength(4)~Password must be at 4 characters"`
 
-	PositionID uint
+	PositionID uint	` valid:"required~Position is required,refer=positions~Position does not exist"`
 	Position   *Position
 
 	PrecedeID uint
@@ -42,9 +41,8 @@ type Precede struct {
 
 type Position struct {
 	gormModel
-	Name        string `gorm:"unique"`
-	Description string
-	Salary      string
+	Name   string `gorm:"unique"`
+	Salary int
 
 	Employee []Employee
 }
@@ -64,13 +62,12 @@ type User struct {
 	Age       int    `valid:"required~Age is required,gte=0~Age must be at least 0"`
 	Phone     string `valid:"required~Phone number is required,stringlength(10|10)~Phone must be at 10 characters"`
 	Email     string `gorm:"unique" valid:"required~Email is required,email~Invalid email"`
-	//Username  string
-	Password string `valid:"required~Password is required,minstringlength(4)~Password must be at 4 characters"`
+	Password  string `valid:"required~Password is required,minstringlength(4)~Password must be at 4 characters"`
 
 	GenderID uint
 	Gender   *Gender
 
-	RoleID uint
+	RoleID uint `gorm:"default:101"`
 	Role   *Role
 
 	Payment []Payment
@@ -80,17 +77,14 @@ type Role struct {
 	gormModel
 	Name string `gorm:"unique"`
 
-	User []User
+	User     []User
 }
 
 type Ticket struct {
 	gormModel
-	Price  string
+	Price  int
 	Seat   int
 	Detail string
-
-	// ProvinceID uint
-	// Province   *Province
 
 	CarID uint
 	Car   *Car
@@ -104,8 +98,6 @@ type Ticket struct {
 type Province struct {
 	gormModel
 	Name string `gorm:"unique"`
-
-	Ticket []Ticket
 }
 
 type Departure struct {
@@ -119,9 +111,8 @@ type Departure struct {
 
 type Car struct {
 	gormModel
-	Name     string
-	CarModel string
-	Route    string
+	Name  string
+	Route string //เส้นทาง
 
 	Ticket []Ticket
 }

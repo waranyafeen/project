@@ -44,5 +44,7 @@ func autoMigrate(database *gorm.DB) {
 		&Ticket{},
 		&Province{},
 		&Departure{},
+		&Car{},
+		&Payment{},
 	)
 }

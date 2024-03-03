@@ -4,7 +4,7 @@ import(
 	"strconv"
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/waranyafeen/project/entity"
+	"github.com/waranyafeen/project/backend/entity"
 	"github.com/asaskevich/govalidator"
 )
 
@@ -12,7 +12,7 @@ import(
 func GetAllUsers(c *gin.Context) {
 	var users []entity.User
 
-	if err := entity.DB().Joins("").Find(&users).Error; err != nil {
+	if err := entity.DB().Where("role_id = ?", 101).Joins("Gender").Find(&users).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -25,7 +25,7 @@ func GetUsers(c *gin.Context) {
 	var user entity.User
 	id := c.Param("id")
 
-	if err := entity.DB().Joins("").First(&user, id).Error; err != nil {
+	if err := entity.DB().First(&user, id).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
